@@ -996,7 +996,7 @@ if hwtype == "mac80211" or hwtype == "prism2" then
 	ieee80211u:depends({mode="ap"})
 	ieee80211u.rmempty = true
 
-	access_network_type = s:taboption("encryption", ListValue, "access_network_type", translate("Access Network Type")
+	access_network_type = s:taboption("encryption", ListValue, "access_network_type", translate("Access Network Type"))
 	access_network_type:depends({mode="ap"})
 	access_network_type:depends({ieee80211u="1"})
 	ieee80211u_internet:value("0", translatef("Private network"))
