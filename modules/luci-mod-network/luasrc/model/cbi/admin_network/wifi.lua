@@ -19,7 +19,7 @@ local acct_port, acct_secret, acct_server, anonymous_identity, ant1, ant2,
 	wmm, wpakey, wps, disassoc_low_ack, short_preamble, beacon_int, dtim_period,
 	wparekey, inactivitypool, maxinactivity, listeninterval,
 	dae_client, dae_port, dae_port, access_network_type, ieee80211u_internet,
-	asra, esr, uesa
+	asra, esr, uesa, venue_group, venue_type, hessid, roaming_consortium
 
 
 arg[1] = arg[1] or ""
@@ -1034,6 +1034,31 @@ if hwtype == "mac80211" or hwtype == "prism2" then
 	uesa:value("0", translate("Unavailable"))
 	uesa:value("1", translate("Available"))
 	uesa.rmempty = true
+
+	venue_group = s:taboption("encryption", Value, "venue_group",
+			translate("Venue Group"), translate("Check IEEE Std 802.11u-2011, 7.3.1.34"))
+	venue_group:depends({ieee80211u="1"})
+	venue_group.placeholder = "7"
+	venue_group.datatype = "uinteger"
+	venue_group.rmempty = true
+
+	venue_type = s:taboption("encryption", Value, "venue_type",
+			translate("Venue Type"), translate("Check IEEE Std 802.11u-2011, 7.3.1.34"))
+	venue_type:depends({ieee80211u="1"})
+	venue_type.placeholder = "1"
+	venue_type.datatype = "uinteger"
+	venue_type.rmempty = true
+
+	hessid = s:taboption("encryption", Value, "hessid",
+			translate("Homogeneous ESS identifier"), translate("Optional"))
+	hessid:depends({ieee80211u="1"})
+	hessid.datatype = "macaddr"
+	hessid.rmempty = true
+
+	roaming_consortium = s:taboption("encryption", Value, "roaming_consortium",
+			translate("Roaming Consortium"), translate("Only one configurable via LuCI"))
+	roaming_consortium:depends({ieee80211u="1"})
+	roaming_consortium.rmempty = true
 	-- End of 802.11u options
 
 	eaptype = s:taboption("encryption", ListValue, "eap_type", translate("EAP-Method"))
