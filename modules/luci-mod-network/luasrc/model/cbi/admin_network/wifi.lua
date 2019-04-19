@@ -998,40 +998,40 @@ if hwtype == "mac80211" or hwtype == "prism2" then
 	access_network_type = s:taboption("encryption", ListValue, "access_network_type", translate("Access Network Type"))
 	access_network_type:depends({mode="ap"})
 	access_network_type:depends({ieee80211u="1"})
-	ieee80211u_internet:value("0", translatef("Private network"))
-	ieee80211u_internet:value("1", translatef("Private network with guest access"))
-	ieee80211u_internet:value("2", translatef("Chargeable public network"))
-	ieee80211u_internet:value("3", translatef("Free public network"))
-	ieee80211u_internet:value("4", translatef("Personal device network"))
-	ieee80211u_internet:value("5", translatef("Emergency services only network"))
-	ieee80211u_internet:value("14", translatef("Test or experimental"))
-	ieee80211u_internet:value("15", translatef("Wildcard"))
+	ieee80211u_internet:value("0", translate("Private network"))
+	ieee80211u_internet:value("1", translate("Private network with guest access"))
+	ieee80211u_internet:value("2", translate("Chargeable public network"))
+	ieee80211u_internet:value("3", translate("Free public network"))
+	ieee80211u_internet:value("4", translate("Personal device network"))
+	ieee80211u_internet:value("5", translate("Emergency services only network"))
+	ieee80211u_internet:value("14", translate("Test or experimental"))
+	ieee80211u_internet:value("15", translate("Wildcard"))
 	access_network_type.rmempty = true
 
 	ieee80211u_internet = s:taboption("encryption", ListValue, "ieee80211u_internet",
 			translate("Internet Access"),
 			translate("Whether the network provides connectivity to the Internet"))
 	ieee80211u_internet:depends({ieee80211u="1"})
-	ieee80211u_internet:value("0", translatef("Unspecified"))
-	ieee80211u_internet:value("1", translatef("Network provides connectivity to the Internet"))
+	ieee80211u_internet:value("0", translate("Unspecified"))
+	ieee80211u_internet:value("1", translate("Network provides connectivity to the Internet"))
 	ieee80211u_internet.rmempty = true
 
 	asra = s:taboption("encryption", ListValue, "asra", translate("Additional Step Required for Access"))
 	asra:depends({ieee80211u="1"})
-	asra:value("0", translatef("None needed"))
-	asra:value("1", translatef("Additional step is required"))
+	asra:value("0", translate("None needed"))
+	asra:value("1", translate("Additional step is required"))
 	asra.rmempty = true
 
 	esr = s:taboption("encryption", ListValue, "esr", translate("Emergency services reachable"))
 	esr:depends({ieee80211u="1"})
-	esr:value("0", translatef("Unavailable"))
-	esr:value("1", translatef("Available"))
+	esr:value("0", translate("Unavailable"))
+	esr:value("1", translate("Available"))
 	esr.rmempty = true
 
 	uesa = s:taboption("encryption", ListValue, "uesa", translate("Unauthenticated emergency service accessible"))
 	uesa:depends({ieee80211u="1"})
-	uesa:value("0", translatef("Unavailable"))
-	uesa:value("1", translatef("Available"))
+	uesa:value("0", translate("Unavailable"))
+	uesa:value("1", translate("Available"))
 	uesa.rmempty = true
 	-- End of 802.11u options
 
