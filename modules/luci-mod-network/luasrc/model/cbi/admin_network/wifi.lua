@@ -11,14 +11,15 @@ local acct_port, acct_secret, acct_server, anonymous_identity, ant1, ant2,
 	auth, auth_port, auth_secret, auth_server, bssid, cacert, cacert2,
 	cc, ch, cipher, clientcert, clientcert2, ea, eaptype, en, encr,
 	ft_protocol, ft_psk_generate_local, hidden, htmode, identity,
-	ieee80211r, ieee80211w, ifname, isolate, key_retries,
+	ieee80211r, ieee80211u, ieee80211w, ifname, isolate, key_retries,
 	legacyrates, max_timeout, meshfwd, meshid, ml, mobility_domain, mode,
 	mp, nasid, network, password, pmk_r1_push, privkey, privkey2, privkeypwd,
 	privkeypwd2, r0_key_lifetime, r0kh, r1_key_holder, r1kh,
 	reassociation_deadline, retry_timeout, ssid, st, tp, wepkey, wepslot,
 	wmm, wpakey, wps, disassoc_low_ack, short_preamble, beacon_int, dtim_period,
 	wparekey, inactivitypool, maxinactivity, listeninterval,
-	dae_client, dae_port, dae_port
+	dae_client, dae_port, dae_port, access_network_type, ieee80211u_internet,
+	asra, esr, uesa
 
 
 arg[1] = arg[1] or ""
@@ -999,14 +1000,14 @@ if hwtype == "mac80211" or hwtype == "prism2" then
 	access_network_type = s:taboption("encryption", ListValue, "access_network_type", translate("Access Network Type"))
 	access_network_type:depends({mode="ap"})
 	access_network_type:depends({ieee80211u="1"})
-	ieee80211u_internet:value("0", translate("Private network"))
-	ieee80211u_internet:value("1", translate("Private network with guest access"))
-	ieee80211u_internet:value("2", translate("Chargeable public network"))
-	ieee80211u_internet:value("3", translate("Free public network"))
-	ieee80211u_internet:value("4", translate("Personal device network"))
-	ieee80211u_internet:value("5", translate("Emergency services only network"))
-	ieee80211u_internet:value("14", translate("Test or experimental"))
-	ieee80211u_internet:value("15", translate("Wildcard"))
+	access_network_type:value("0", translate("Private network"))
+	access_network_type:value("1", translate("Private network with guest access"))
+	access_network_type:value("2", translate("Chargeable public network"))
+	access_network_type:value("3", translate("Free public network"))
+	access_network_type:value("4", translate("Personal device network"))
+	access_network_type:value("5", translate("Emergency services only network"))
+	access_network_type:value("14", translate("Test or experimental"))
+	access_network_type:value("15", translate("Wildcard"))
 	access_network_type.rmempty = true
 
 	ieee80211u_internet = s:taboption("encryption", ListValue, "ieee80211u_internet",
