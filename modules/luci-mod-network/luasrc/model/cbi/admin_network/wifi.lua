@@ -997,7 +997,6 @@ if hwtype == "mac80211" or hwtype == "prism2" then
 	ieee80211u.rmempty = true
 
 	access_network_type = s:taboption("encryption", ListValue, "access_network_type", translate("Access Network Type"))
-	access_network_type:depends({mode="ap"})
 	access_network_type:depends({ieee80211u="1"})
 	access_network_type:value("0", translate("Private network"))
 	access_network_type:value("1", translate("Private network with guest access"))
@@ -1013,8 +1012,8 @@ if hwtype == "mac80211" or hwtype == "prism2" then
 			translate("Internet Access"),
 			translate("Whether the network provides connectivity to the Internet"))
 	ieee80211u_internet:depends({ieee80211u="1"})
-	ieee80211u_internet:value("0", translate("Unspecified"))
 	ieee80211u_internet:value("1", translate("Network provides connectivity to the Internet"))
+	ieee80211u_internet:value("0", translate("Unspecified"))
 	ieee80211u_internet.rmempty = true
 
 	asra = s:taboption("encryption", ListValue, "asra", translate("Additional Step Required for Access"))
