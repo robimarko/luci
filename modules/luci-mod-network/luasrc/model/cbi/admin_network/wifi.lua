@@ -1108,6 +1108,16 @@ if hwtype == "mac80211" or hwtype == "prism2" then
 	qos_map_set.rmempty = true
 	-- End of 802.11u options
 
+	-- Probe Hotspot 2.0 support
+	local has_hs20 = (os.execute("hostapd -vhs20 2>/dev/null") == 0)
+
+	hs20 = s:taboption("encryption", Flag, "hs20",
+		translate("Hotspot 2.0"),
+		translate("Enables Wi-Fi Alliance Hotspot 2.0"))
+	hs20:depends({mode="ap", encryption="wpa2"})
+	hs20.rmempty = true
+	-- End of Hotspot 2.0 options
+
 	eaptype = s:taboption("encryption", ListValue, "eap_type", translate("EAP-Method"))
 	eaptype:value("tls",  "TLS")
 	eaptype:value("ttls", "TTLS")
