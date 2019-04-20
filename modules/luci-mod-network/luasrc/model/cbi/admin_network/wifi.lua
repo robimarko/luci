@@ -1058,6 +1058,19 @@ if hwtype == "mac80211" or hwtype == "prism2" then
 			translate("Roaming Consortium"), translate("Only one configurable via LuCI"))
 	roaming_consortium:depends({ieee80211u="1"})
 	roaming_consortium.rmempty = true
+
+	venue_name = s:taboption("encryption", Value, "venue_name",
+			translate("Venue Name"), translate("Format is ISO-639 language code:Name string"))
+	venue_name:depends({ieee80211u="1"})
+	venue_name.rmempty = true
+
+	network_auth_type = s:taboption("encryption", ListValue, "network_auth_type", translate("Network Authentication Type"))
+	network_auth_type:depends({ieee80211u="1"})
+	network_auth_type:value("00", translate("Acceptance of terms and conditions"))
+	network_auth_type:value("01", translate("On-line enrollment supported"))
+	network_auth_type:value("02", translate("http/https redirection"))
+	network_auth_type:value("03", translate("DNS redirection"))
+	network_auth_type.rmempty = true
 	-- End of 802.11u options
 
 	eaptype = s:taboption("encryption", ListValue, "eap_type", translate("EAP-Method"))
