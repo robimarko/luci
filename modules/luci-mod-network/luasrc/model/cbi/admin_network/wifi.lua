@@ -1065,6 +1065,10 @@ if hwtype == "mac80211" or hwtype == "prism2" then
 	venue_name:depends({ieee80211u="1"})
 	venue_name.rmempty = true
 
+	venue_url = s:taboption("encryption", Value, "venue_url", translate("Venue URL"))
+	venue_url:depends({ieee80211u="1"})
+	venue_url.rmempty = true
+
 	network_auth_type = s:taboption("encryption", ListValue, "network_auth_type", translate("Network Authentication Type"))
 	network_auth_type:depends({ieee80211u="1"})
 	network_auth_type:value("00", translate("Acceptance of terms and conditions"))
@@ -1072,6 +1076,36 @@ if hwtype == "mac80211" or hwtype == "prism2" then
 	network_auth_type:value("02", translate("http/https redirection"))
 	network_auth_type:value("03", translate("DNS redirection"))
 	network_auth_type.rmempty = true
+
+	ipaddr_type_availability = s:taboption("encryption", Value, "ipaddr_type_availability",
+			translate("IP Address Type Availability"))
+	ipaddr_type_availability:depends({ieee80211u="1"})
+	ipaddr_type_availability.rmempty = true
+
+	domain_name = s:taboption("encryption", Value, "domain_name", translate("Domain Name"))
+	domain_name:depends({ieee80211u="1"})
+	domain_name.rmempty = true
+
+	anqp_3gpp_cell_net = s:taboption("encryption", Value, "anqp_3gpp_cell_net",
+			translate("3GPP Cellular Network information"))
+	anqp_3gpp_cell_net:depends({ieee80211u="1"})
+	anqp_3gpp_cell_net.rmempty = true
+
+	nai_realm = s:taboption("encryption", Value, "nai_realm", translate("NAI Realm information"))
+	nai_realm:depends({ieee80211u="1"})
+	nai_realm.rmempty = true
+
+	anqp_elem = s:taboption("encryption", Value, "anqp_elem", translate("Arbitrary ANQP-element configuration"))
+	anqp_elem:depends({ieee80211u="1"})
+	anqp_elem.rmempty = true
+
+	gas_address3 = s:taboption("encryption", Value, "gas_address3", translate("GAS Address 3 behavior"))
+	gas_address3:depends({ieee80211u="1"})
+	gas_address3.rmempty = true
+
+	qos_map_set = s:taboption("encryption", Value, "qos_map_set", translate("QoS Map Set configuration"))
+	qos_map_set:depends({ieee80211u="1"})
+	qos_map_set.rmempty = true
 	-- End of 802.11u options
 
 	eaptype = s:taboption("encryption", ListValue, "eap_type", translate("EAP-Method"))
