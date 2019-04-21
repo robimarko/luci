@@ -1133,7 +1133,7 @@ if hwtype == "mac80211" or hwtype == "prism2" then
 	anqp_domain_id.rmempty = true
 
 	hs20_deauth_req_timeout = s:taboption("encryption", Value, "hs20_deauth_req_timeout",
-		translate("Deauthentication request timeout"))
+		translate("Deauthentication request timeout"), translate("Format is ISO-639 language code:Name string "))
 	hs20_deauth_req_timeout:depends({hs20="1"})
 	hs20_deauth_req_timeout.datatype = "uinteger"
 	hs20_deauth_req_timeout.rmempty = true
