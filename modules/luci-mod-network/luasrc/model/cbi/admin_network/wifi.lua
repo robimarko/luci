@@ -1113,8 +1113,39 @@ if hwtype == "mac80211" or hwtype == "prism2" then
 	hs20 = s:taboption("encryption", Flag, "hs20",
 		translate("Hotspot 2.0"),
 		translate("Enables Wi-Fi Alliance Hotspot 2.0"))
-	hs20:depends({mode="ap", encryption="wpa2"})
+	hs20:depends({mode="ap", encryption="wpa2", cipher="ccmp"})
 	hs20.rmempty = true
+
+	disable_dgaf = s:taboption("encryption", Flag, "disable_dgaf",
+			translate("Disable Downstream Group-Addressed Forwarding (DGAF)"))
+	disable_dgaf:depends({hs20="1"})
+	disable_dgaf.rmempty = true
+
+	osen = s:taboption("encryption", Flag, "osen",
+			translate("OSU Server-Only Authenticated L2 Encryption Network"))
+	osen:depends({hs20="1"})
+	osen.rmempty = true
+
+	anqp_domain_id = s:taboption("encryption", Value, "anqp_domain_id", translate("ANQP Domain ID"))
+	anqp_domain_id:depends({hs20="1"})
+	anqp_domain_id.datatype = "range(0,65535)"
+	anqp_domain_id.rmempty = true
+
+	hs20_deauth_req_timeout = s:taboption("encryption", Value, "hs20_deauth_req_timeout",
+		translate("Deauthentication request timeout"))
+	hs20_deauth_req_timeout:depends({hs20="1"})
+	hs20_deauth_req_timeout.datatype = "uinteger"
+	hs20_deauth_req_timeout.rmempty = true
+
+	hs20_oper_friendly_name = s:taboption("encryption", Value, "hs20_oper_friendly_name",
+		translate("Operator Friendly Name"), translate("Only one configurable via LuCI"))
+	hs20_oper_friendly_name:depends({hs20="1"})
+	hs20_oper_friendly_name.rmempty = true
+
+	hs20_conn_capab = s:taboption("encryption", Value, "hs20_conn_capab", translate("Connection Capability"))
+	hs20_conn_capab:depends({hs20="1"})
+	hs20_conn_capab.rmempty = true
+
 	-- End of Hotspot 2.0 options
 
 	eaptype = s:taboption("encryption", ListValue, "eap_type", translate("EAP-Method"))
