@@ -1197,7 +1197,7 @@ if hwtype == "mac80211" or hwtype == "prism2" then
 	osu_icon.rmempty = true
 
 	osu_service_desc = s:taboption("encryption", Value, "osu_service_desc",
-		translate("OSU Provider service description"), translate("Only one configurable via LuCI"),
+		translate("OSU Provider service description"), 
 		translate("Format is ISO-639 language code:Name string "))
 	osu_service_desc:depends({hs20="1"})
 	osu_service_desc.rmempty = true
