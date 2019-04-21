@@ -1146,6 +1146,66 @@ if hwtype == "mac80211" or hwtype == "prism2" then
 	hs20_conn_capab:depends({hs20="1"})
 	hs20_conn_capab.rmempty = true
 
+	hs20_wan_metrics = s:taboption("encryption", Value, "hs20_wan_metrics", translate("WAN Metrics"))
+	hs20_wan_metrics:depends({hs20="1"})
+	hs20_wan_metrics.rmempty = true
+
+	hs20_operating_class = s:taboption("encryption", Value, "hs20_operating_class",
+		translate("Operating Class Indication"))
+	hs20_operating_class:depends({hs20="1"})
+	hs20_operating_class.rmempty = true
+
+	hs20_t_c_filename = s:taboption("encryption", Value, "hs20_t_c_filename",
+		translate("Terms and Conditions filename"))
+	hs20_t_c_filename:depends({hs20="1"})
+	hs20_t_c_filename.rmempty = true
+
+	hs20_t_c_timestamp = s:taboption("encryption", Value, "hs20_t_c_timestamp",
+		translate("Terms and Conditions timestamp"))
+	hs20_t_c_timestamp:depends({hs20="1"})
+	hs20_t_c_timestamp.rmempty = true
+
+	hs20_t_c_server_url = s:taboption("encryption", Value, "hs20_t_c_server_url",
+		translate("Terms and Conditions server URL"))
+	hs20_t_c_server_url:depends({hs20="1"})
+	hs20_t_c_server_url.rmempty = true
+
+	osu_server_uri = s:taboption("encryption", Value, "osu_server_uri",
+		translate("OSU Provider server URI"), translate("Only one configurable via LuCI"))
+	osu_server_uri:depends({hs20="1"})
+	osu_server_uri.rmempty = true
+
+	osu_friendly_name = s:taboption("encryption", Value, "osu_friendly_name",
+		translate("OSU Provider friendly name"), translate("Only one configurable via LuCI"))
+	osu_friendly_name:depends({hs20="1"})
+	osu_friendly_name.rmempty = true
+
+	osu_nai = s:taboption("encryption", Value, "osu_nai",
+		translate("OSU Provider NAI"), translate("Only one configurable via LuCI"))
+	osu_nai:depends({hs20="1"})
+	osu_nai.rmempty = true
+
+	osu_method_list = s:taboption("encryption", Value, "osu_method_list",
+		translate("OSU Provider method list"), translate("Only one configurable via LuCI"))
+	osu_method_list:depends({hs20="1"})
+	osu_method_list.rmempty = true
+
+	osu_icon = s:taboption("encryption", Value, "osu_icon",
+		translate("OSU Provider icon"), translate("Only one configurable via LuCI"))
+	osu_icon:depends({hs20="1"})
+	osu_icon.rmempty = true
+
+	osu_service_desc = s:taboption("encryption", Value, "osu_service_desc",
+		translate("OSU Provider service description"), translate("Only one configurable via LuCI"),
+		translate("Format is ISO-639 language code:Name string "))
+	osu_service_desc:depends({hs20="1"})
+	osu_service_desc.rmempty = true
+
+	operator_icon = s:taboption("encryption", Value, "operator_icon",
+		translate("Operator Icon"), translate("Only one configurable via LuCI"))
+	operator_icon:depends({hs20="1"})
+	operator_icon.rmempty = true
+
 	-- End of Hotspot 2.0 options
 
 	eaptype = s:taboption("encryption", ListValue, "eap_type", translate("EAP-Method"))
