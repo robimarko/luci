@@ -1,0 +1,28 @@
+<%#
+ Copyright 2019 Robert Marko <robimarko@gmail.com>
+ Licensed to the public under the Apache License 2.0.
+-%>
+
+
+<%+header%>
+
+<h2 name="content"><%:MeshPoint dashboard%></h2>
+<br />
+
+<div class="cbi-section">
+	<h3><%:Status%></h3>
+
+	<div class="table" width="100%">
+		<div class="tr"><div class="td left" width="33%"><%:Voltage IN%></div><div class="td left"><%=luci.util.trim(luci.sys.exec("cat /sys/bus/i2c/devices/2-0044/hwmon/hwmon1/in1_input"))/1000 or "?"%><%: V%></div></div>
+		<div class="tr"><div class="td left" width="33%"><%:Current IN%></div><div class="td left"><%=luci.util.trim(luci.sys.exec("cat /sys/bus/i2c/devices/2-0044/hwmon/hwmon1/curr1_input")) or "?"%><%: mA%></div></div>
+		<div class="tr"><div class="td left" width="33%"><%:Power consumption%></div><div class="td left"><%=luci.util.trim(luci.sys.exec("cat /sys/bus/i2c/devices/2-0044/hwmon/hwmon1/power1_input"))/1000000 or "?"%><%: W%></div></div>
+		<div class="tr"><div class="td left" width="33%"><%:Voltage OUT%></div><div class="td left"><%=luci.util.trim(luci.sys.exec("cat /sys/bus/i2c/devices/2-0040/hwmon/hwmon0/in1_input"))/1000 or "?"%><%: V%></div></div>
+		<div class="tr"><div class="td left" width="33%"><%:Current OUT%></div><div class="td left"><%=luci.util.trim(luci.sys.exec("cat /sys/bus/i2c/devices/2-0040/hwmon/hwmon0/curr1_input")) or "?"%><%: mA%></div></div>
+		<div class="tr"><div class="td left" width="33%"><%:Power OUT%></div><div class="td left"><%=luci.util.trim(luci.sys.exec("cat /sys/bus/i2c/devices/2-0040/hwmon/hwmon0/power1_input"))/1000000 or "?"%><%: W%></div></div>
+		<div class="tr"><div class="td left" width="33%"><%:Board temperature%></div><div class="td left"><%=luci.util.trim(luci.sys.exec("cat /sys/devices/platform/soc/soc:i2c-gpio/i2c-2/2-0076/iio:device0/in_temp_input"))/1000 or "?"%><%: C%></div></div>
+		<div class="tr"><div class="td left" width="33%"><%:Air Humidity%></div><div class="td left"><%=luci.util.trim(luci.sys.exec("cat /sys/devices/platform/soc/soc:i2c-gpio/i2c-2/2-0076/iio:device0/in_humidityrelative_input"))/1000 or "?"%><%: %%></div></div>
+		<div class="tr"><div class="td left" width="33%"><%:Air Pressure%></div><div class="td left"><%=luci.util.trim(luci.sys.exec("cat /sys/devices/platform/soc/soc:i2c-gpio/i2c-2/2-0076/iio:device0/in_pressure_input"))*10 or "?"%><%: hPa%></div></div>
+	</div>
+</div>
+
+<%+footer%>
